@@ -3,15 +3,28 @@
 		.module('app')
 		.factory('peopleService', peopleService);
 
-	function peopleService() {
+	peopleService.$inject = ['dataService'];
+
+	function peopleService(dataService) {
 		return {
-			get: function () {
-				return peopleData;
-			}
+			find: find,
+			get: get
+		};
+
+		function find(id) {
+			var person = people.filter(function (person) {
+				return person.id === id;
+			});
+
+			return person[0];
+		}
+
+		function get() {
+			return dataService.get('/api/people');
 		}
 	}
 
-	var peopleData = [
+	var people = [
 		{
 			email: 'bbarnett@rightpoint.com',
 			location: 'Chicago',

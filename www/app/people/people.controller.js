@@ -9,9 +9,20 @@
 		var vm = this;
 
 		vm.navigate = navigate;
+		vm.people = [];
 
-		vm.people = peopleService.get();
+		activate();
 
+		function activate() {
+			peopleService
+				.get()
+				.then(function (data) {
+					vm.people = data;
+				}, function (msg) {
+					
+				});
+		}
+		
 		function navigate(url) {
 			document.location.href = url;
 		}
