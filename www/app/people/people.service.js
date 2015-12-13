@@ -3,9 +3,9 @@
 		.module('app')
 		.factory('peopleService', peopleService);
 
-	peopleService.$inject = ['dataService'];
+	peopleService.$inject = ['dataService', 'localStorageService', '$q'];
 
-	function peopleService(dataService) {
+	function peopleService(dataService, localStorageService, $q) {
 		return {
 			find: find,
 			get: get
@@ -20,11 +20,28 @@
 		}
 
 		function get() {
-			return dataService.get('/api/people');
+			var deferred = $q.defer();
+			
+			// dev
+			localStorageService.set('peopleDirectory.people', $people);
+			
+			var people = localStorageService.get('peopleDirectory.people');
+			
+			dataService.get('/api/people')
+				.then(function(data){
+					people = data;
+					localStorageService.set('peopleDirectory.people', people);
+					
+					deferred.resolve(people);
+				}, function(msg){
+					deferred.resolve(people);
+				});
+			
+			return deferred.promise;
 		}
 	}
 
-	var people = [
+	var $people = [
 		{
 			email: 'bbarnett@rightpoint.com',
 			location: 'Chicago',
