@@ -7,8 +7,10 @@
       </label>
     </div>
     <ion-list>
-      <ion-item class="" ng-repeat="person in vm.people | filter:vm.filter">
-        {{person.name}}
+      <ion-item class="item-avatar" ng-repeat="person in vm.people | filter:vm.filter">
+        <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQLV9Fpe2eu2pVQCUBSTzSY95zI0teRszEivNzLDbYq8yEVuLyqUOm5h48" alt="{{person.name}}" />
+        <h2>{{person.name}}</h2>
+        <p>{{person.practice}}</p>
 
         <ion-option-button class="button icon" ng-class="{'ion-ios-email': vm.platform.isIos, 'ion-android-mail': vm.platform.isAndroid}" ng-click="vm.openUrl('mailto:{{person.email}}')"></ion-option-button>
         <ion-option-button class="button icon" ng-class="{'ion-ios-telephone': vm.platform.isIos, 'ion-android-call': vm.platform.isAndroid}" ng-click="vm.openUrl('tel:{{person.phone}}')"></ion-option-button>
