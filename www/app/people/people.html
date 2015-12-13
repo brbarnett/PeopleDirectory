@@ -7,9 +7,9 @@
       <ion-item class="" ng-repeat="person in vm.people | filter:vm.filter">
         {{person.name}}
 
-        <ion-option-button class="button icon ion-ios-email ion-android-mail" ng-click="vm.navigate('mailto:{{person.email}}')"></ion-option-button>
-        <ion-option-button class="button icon ion-ios-telephone ion-android-phone" ng-click="vm.navigate('tel:{{person.phone}}')"></ion-option-button>
-        <ion-option-button class="button icon ion-ios-person ion-android-person" ng-click="vm.navigate('https://www.yammer.com/rightpoint.com/users/{{person.username}}')"></ion-option-button>
+        <ion-option-button class="button icon" ng-class="{'ion-ios-email': vm.platform.isIOS(), 'ion-android-mail': vm.platform.isAndroid()}" ng-click="vm.navigate('mailto:{{person.email}}')"></ion-option-button>
+        <ion-option-button class="button icon" ng-class="{'ion-ios-telephone': vm.platform.isIOS(), 'ion-android-phone': vm.platform.isAndroid()}" ng-click="vm.navigate('tel:{{person.phone}}')"></ion-option-button>
+        <ion-option-button class="button icon" ng-class="{'ion-ios-person': vm.platform.isIOS(), 'ion-android-person': vm.platform.isAndroid()}" ng-click="vm.navigate('https://www.yammer.com/rightpoint.com/users/{{person.username}}')"></ion-option-button>
       </ion-item>
     </ion-list>
   </ion-content>

@@ -18,17 +18,22 @@
 				template: 'Loading...'
 			});
 			
+			// get data
 			peopleService
 				.get()
 				.then(function (data) {
 					vm.people = data;
 				}, function (msg) {
-					
-				}).then(function(){
+
+				}).then(function () {
 					$ionicLoading.hide();
 				});
+
+			ionic.Platform.ready(function () {
+				vm.platform = ionic.Platform;
+			});
 		}
-		
+
 		function navigate(url) {
 			document.location.href = url;
 		}
