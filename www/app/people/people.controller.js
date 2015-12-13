@@ -3,14 +3,15 @@
 		.module('app')
 		.controller('PeopleCtrl', PeopleCtrl);
 
-	PeopleCtrl.$inject = ['peopleService', '$ionicLoading'];
+	PeopleCtrl.$inject = ['$scope', 'peopleService', '$ionicLoading'];
 
-	function PeopleCtrl(peopleService, $ionicLoading) {
+	function PeopleCtrl($scope, peopleService, $ionicLoading) {
 		var vm = this;
 
 		vm.openBrowser = openBrowser;
 		vm.openUrl = openUrl;
 		vm.people = [];
+		vm.refresh = refresh;
 
 		activate();
 
@@ -18,17 +19,8 @@
 			$ionicLoading.show({
 				template: 'Loading...'
 			});
-			
-			// get data
-			peopleService
-				.get()
-				.then(function (data) {
-					vm.people = data;
-				}, function (msg) {
 
-				}).then(function () {
-					$ionicLoading.hide();
-				});
+			refresh();
 
 			ionic.Platform.ready(function () {
 				vm.platform = {
@@ -38,14 +30,28 @@
 			});
 		}
 
+		function openBrowser(url) {
+			console.log('Opening browser: ' + url);
+			window.open(url, '_system')
+		}
+
 		function openUrl(url) {
 			console.log('Opening: ' + url);
 			window.location.href = url;
 		}
 
-		function openBrowser(url) {
-			console.log('Opening browser: ' + url);
-			window.open(url, '_system')
+		function refresh() {
+			// get data
+			peopleService
+				.get()
+				.then(function (data) {
+					vm.people = data;
+				}, function (msg) {
+
+				}).then(function () {
+					$ionicLoading.hide();
+					$scope.$broadcast('scroll.refreshComplete');
+				});
 		}
 	}
 } ());

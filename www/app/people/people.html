@@ -1,20 +1,28 @@
 <ion-view view-title="People">
   <ion-content padding="false">
+    <ion-refresher pulling-text="Pull to refresh..." on-refresh="vm.refresh()">
+    </ion-refresher>
+
     <div class="list list-inset">
       <label class="item item-input">
         <i class="icon ion-search placeholder-icon"></i>
         <input type="text" ng-model="vm.filter" placeholder="Search (e.g. - John Smith)">
       </label>
     </div>
+    
     <ion-list>
       <ion-item class="item-avatar" ng-repeat="person in vm.people | filter:vm.filter">
-        <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQLV9Fpe2eu2pVQCUBSTzSY95zI0teRszEivNzLDbYq8yEVuLyqUOm5h48" alt="{{person.name}}" />
+        <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQLV9Fpe2eu2pVQCUBSTzSY95zI0teRszEivNzLDbYq8yEVuLyqUOm5h48"
+        alt="{{person.name}}" />
         <h2>{{person.name}}</h2>
         <p>{{person.practice}}</p>
 
-        <ion-option-button class="button icon" ng-class="{'ion-ios-email': vm.platform.isIos, 'ion-android-mail': vm.platform.isAndroid}" ng-click="vm.openUrl('mailto:{{person.email}}')"></ion-option-button>
-        <ion-option-button class="button icon" ng-class="{'ion-ios-telephone': vm.platform.isIos, 'ion-android-call': vm.platform.isAndroid}" ng-click="vm.openUrl('tel:{{person.phone}}')"></ion-option-button>
-        <ion-option-button class="button icon" ng-class="{'ion-ios-person': vm.platform.isIos, 'ion-android-person': vm.platform.isAndroid}" ng-click="vm.openBrowser('https://www.yammer.com/rightpoint.com/users/{{person.username}}')"></ion-option-button>
+        <ion-option-button class="button icon" ng-class="{'ion-ios-email': vm.platform.isIos, 'ion-android-mail': vm.platform.isAndroid}"
+        ng-click="vm.openUrl('mailto:{{person.email}}')"></ion-option-button>
+        <ion-option-button class="button icon" ng-class="{'ion-ios-telephone': vm.platform.isIos, 'ion-android-call': vm.platform.isAndroid}"
+        ng-click="vm.openUrl('tel:{{person.phone}}')"></ion-option-button>
+        <ion-option-button class="button icon" ng-class="{'ion-ios-person': vm.platform.isIos, 'ion-android-person': vm.platform.isAndroid}"
+        ng-click="vm.openBrowser('https://www.yammer.com/rightpoint.com/users/{{person.username}}')"></ion-option-button>
       </ion-item>
     </ion-list>
   </ion-content>
