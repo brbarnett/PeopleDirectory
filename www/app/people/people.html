@@ -8,7 +8,7 @@
         {{person.name}}
 
         <ion-option-button class="button icon" ng-class="{'ion-ios-email': vm.platform.isIOS(), 'ion-android-mail': vm.platform.isAndroid()}" ng-click="vm.navigate('mailto:{{person.email}}')"></ion-option-button>
-        <ion-option-button class="button icon" ng-class="{'ion-ios-telephone': vm.platform.isIOS(), 'ion-android-phone': vm.platform.isAndroid()}" ng-click="vm.navigate('tel:{{person.phone}}')"></ion-option-button>
+        <ion-option-button class="button icon" ng-class="{'ion-ios-telephone': vm.platform.isIOS(), 'ion-android-call': vm.platform.isAndroid()}" ng-click="vm.navigate('tel:{{person.phone}}')"></ion-option-button>
         <ion-option-button class="button icon" ng-class="{'ion-ios-person': vm.platform.isIOS(), 'ion-android-person': vm.platform.isAndroid()}" ng-click="vm.navigate('https://www.yammer.com/rightpoint.com/users/{{person.username}}')"></ion-option-button>
       </ion-item>
     </ion-list>
