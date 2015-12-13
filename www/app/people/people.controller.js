@@ -8,7 +8,8 @@
 	function PeopleCtrl(peopleService, $ionicLoading) {
 		var vm = this;
 
-		vm.navigate = navigate;
+		vm.openBrowser = openBrowser;
+		vm.openUrl = openUrl;
 		vm.people = [];
 
 		activate();
@@ -37,8 +38,14 @@
 			});
 		}
 
-		function navigate(url) {
-			window.open(url);
+		function openUrl(url) {
+			console.log('Opening: ' + url);
+			window.location.href = url;
+		}
+
+		function openBrowser(url) {
+			console.log('Opening browser: ' + url);
+			window.open(url, '_system')
 		}
 	}
 } ());
