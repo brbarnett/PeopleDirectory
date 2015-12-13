@@ -18,9 +18,11 @@
         <p>{{person.practice}}</p>
 
         <ion-option-button class="button icon" ng-class="{'ion-ios-email': vm.platform.isIos, 'ion-android-mail': vm.platform.isAndroid}"
-        ng-click="vm.openUrl('mailto:{{person.email}}')"></ion-option-button>
+        ng-click="vm.openBrowser('mailto:{{person.email}}')"></ion-option-button>
+        <ion-option-button class="button icon" ng-class="{'ion-ios-chatbubble': vm.platform.isIos, 'ion-android-textsms': vm.platform.isAndroid}"
+        ng-click="vm.openBrowser('sms:{{person.phone}}')"></ion-option-button>
         <ion-option-button class="button icon" ng-class="{'ion-ios-telephone': vm.platform.isIos, 'ion-android-call': vm.platform.isAndroid}"
-        ng-click="vm.openUrl('tel:{{person.phone}}')"></ion-option-button>
+        ng-click="vm.openBrowser('tel:{{person.phone}}')"></ion-option-button>
         <ion-option-button class="button icon" ng-class="{'ion-ios-person': vm.platform.isIos, 'ion-android-person': vm.platform.isAndroid}"
         ng-click="vm.openBrowser('https://www.yammer.com/rightpoint.com/users/{{person.username}}')"></ion-option-button>
       </ion-item>

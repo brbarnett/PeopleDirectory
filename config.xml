@@ -4,11 +4,14 @@
   <description>
         A directory of Rightpoint people.
     </description>
-  <author email="you@example.com" href="http://example.com.com/">
+  <author email="bbarnett@rightpoint.com" href="http://www.rightpoint.com/">
       Brandon R Barnett
     </author>
   <content src="index.html"/>
   <access origin="*"/>
+  <access origin="mailto:*" launch-external="yes"/>
+  <access origin="sms:*" launch-external="yes"/>
+  <access origin="tel:*" launch-external="yes"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
