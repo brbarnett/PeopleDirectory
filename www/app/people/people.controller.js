@@ -30,12 +30,15 @@
 				});
 
 			ionic.Platform.ready(function () {
-				vm.platform = ionic.Platform;
+				vm.platform = {
+					isAndroid: ionic.Platform.isAndroid(),
+					isIos: ionic.Platform.isIOS()
+				};
 			});
 		}
 
 		function navigate(url) {
-			document.location.href = url;
+			window.open(url);
 		}
 	}
 } ());
