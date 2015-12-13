@@ -9,7 +9,6 @@
 		var vm = this;
 
 		vm.openBrowser = openBrowser;
-		vm.openUrl = openUrl;
 		vm.people = [];
 		vm.refresh = refresh;
 
@@ -31,15 +30,9 @@
 		}
 
 		function openBrowser(url) {
-			console.log('Opening browser: ' + url);
 			window.open(url, '_system')
 		}
-
-		function openUrl(url) {
-			console.log('Opening: ' + url);
-			window.location.href = url;
-		}
-
+		
 		function refresh() {
 			// get data
 			peopleService
