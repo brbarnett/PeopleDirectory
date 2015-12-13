@@ -19,7 +19,7 @@
                 }).error(function (msg, code) {
                     deferred.reject(msg);
                 });
-                
+
             return deferred.promise;
         }
     }

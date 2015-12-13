@@ -3,9 +3,9 @@
 		.module('app')
 		.controller('PeopleCtrl', PeopleCtrl);
 
-	PeopleCtrl.$inject = ['peopleService'];
+	PeopleCtrl.$inject = ['peopleService', '$ionicLoading'];
 
-	function PeopleCtrl(peopleService) {
+	function PeopleCtrl(peopleService, $ionicLoading) {
 		var vm = this;
 
 		vm.navigate = navigate;
@@ -14,12 +14,18 @@
 		activate();
 
 		function activate() {
+			$ionicLoading.show({
+				template: 'Loading...'
+			});
+			
 			peopleService
 				.get()
 				.then(function (data) {
 					vm.people = data;
 				}, function (msg) {
 					
+				}).then(function(){
+					$ionicLoading.hide();
 				});
 		}
 		
