@@ -14,6 +14,8 @@
 		};
 
 		function find(id) {
+			var people = localStorageService.get('peopleDirectory.people');
+			
 			var person = people.filter(function (person) {
 				return person.id === id;
 			});
