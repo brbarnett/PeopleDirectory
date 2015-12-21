@@ -11,7 +11,7 @@
     </div>
     
     <ion-list>
-      <ion-item class="item-avatar" ng-repeat="person in vm.people | filter:vm.filter">
+      <ion-item class="item-avatar" collection-repeat="person in vm.people | filter:vm.filter">
         <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQLV9Fpe2eu2pVQCUBSTzSY95zI0teRszEivNzLDbYq8yEVuLyqUOm5h48"
         alt="{{person.name}}" />
         <h2>{{person.name}}</h2>
