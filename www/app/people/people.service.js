@@ -42,7 +42,7 @@
 							location: person.Location,
 							name: person.Name,
 							phone: person.Phone,
-							username: person.username
+							username: person.Username
 						}
 					});
 					localStorageService.set('peopleDirectory.people', people);
