@@ -21,7 +21,9 @@
 				template: 'Loading...'
 			});
 
-			refresh();
+			refresh({
+				harder: false
+			});
 
 			ionic.Platform.ready(function () {
 				vm.platform = {
@@ -35,10 +37,12 @@
 			window.open(url, '_system')
 		}
 		
-		function refresh() {
+		function refresh(options) {
 			// get data
 			peopleService
-				.get()
+				.get({
+					harder: options && options.harder
+				})
 				.then(function (data) {
 					vm.people = data;
 				}, function (msg) {

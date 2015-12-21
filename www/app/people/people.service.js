@@ -1,6 +1,6 @@
 (function () {
 	'use strict';
-	
+
 	angular
 		.module('app')
 		.factory('peopleService', peopleService);
@@ -15,7 +15,7 @@
 
 		function find(id) {
 			var people = localStorageService.get('peopleDirectory.people');
-			
+
 			var person = people.filter(function (person) {
 				return person.id === id;
 			});
@@ -23,14 +23,18 @@
 			return person[0];
 		}
 
-		function get() {
+		function get(options) {
 			var deferred = $q.defer();
-			
+
 			var people = localStorageService.get('peopleDirectory.people');
-			
+
+			if (!options.harder) {	// allow to escape early
+				if (people) deferred.resolve(people);
+			}
+
 			dataService.get('http://rp-directory.azurewebsites.net/api/people')
-				.then(function(data){
-					people = data.map(function(person){
+				.then(function (data) {
+					people = data.map(function (person) {
 						return {
 							practice: person.Practice,
 							email: person.Email,
@@ -42,12 +46,12 @@
 						}
 					});
 					localStorageService.set('peopleDirectory.people', people);
-					
+
 					deferred.resolve(people);
-				}, function(msg){
+				}, function (msg) {
 					deferred.resolve(people);
 				});
-			
+
 			return deferred.promise;
 		}
 	}
