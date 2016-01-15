@@ -42,6 +42,7 @@
 							location: person.Location,
 							name: person.Name,
 							phone: person.Phone,
+                            photoUrl: person.PhotoUrl || 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQLV9Fpe2eu2pVQCUBSTzSY95zI0teRszEivNzLDbYq8yEVuLyqUOm5h48',
 							username: person.Username
 						}
 					});
