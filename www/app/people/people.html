@@ -22,8 +22,8 @@
         ng-click="vm.openBrowser('sms:' + person.phone)" ng-show="person.phone.length > 0"></ion-option-button>
         <ion-option-button class="button icon" ng-class="{'ion-ios-telephone': vm.platform.isIos, 'ion-android-call': vm.platform.isAndroid}"
         ng-click="vm.openBrowser('tel:' + person.phone)" ng-show="person.phone.length > 0"></ion-option-button>
-        <ion-option-button class="button icon" ng-class="{'ion-ios-person': vm.platform.isIos, 'ion-android-person': vm.platform.isAndroid}"
-        ng-click="vm.openBrowser('https://www.yammer.com/rightpoint.com/users/' + person.username)"></ion-option-button>
+        <!--<ion-option-button class="button icon" ng-class="{'ion-ios-person': vm.platform.isIos, 'ion-android-person': vm.platform.isAndroid}"
+        ng-click="vm.openBrowser('yammer://www.yammer.com/rightpoint.com/users/' + person.username + '?allow_app_redirect=1')"></ion-option-button>-->
       </ion-item>
     </ion-list>
   </ion-content>
